@@ -1,0 +1,32 @@
+{
+  "name": "factory",
+  "version": "1.0.0",
+  "description": "certificate device cert in factory mode",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CJackYang/factory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CJackYang/factory/issues"
+  },
+  "homepage": "https://github.com/CJackYang/factory#readme",
+  "dependencies": {
+    "@fidm/x509": "^1.2.0",
+    "aws-sdk": "^2.322.0",
+    "bluebird": "^3.5.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-plugin-promise": "^4.0.1"
+  }
+}

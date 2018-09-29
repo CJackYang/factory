@@ -1,0 +1,17 @@
+{
+  "editor.fontSize": 16,
+  "editor.tabSize": 2,
+  "files.autoSave": "afterDelay",
+  "psi-header.config": {
+    "forceToTop":true,
+    "author": "JackYang",
+    "authorEmail": "cjackyang@gmail.com",
+    "company": "Wisnuc Inc",
+  },
+  "psi-header.changes-tracking": {
+    "autoHeader": "autoSave",
+    "isActive": true,
+    "modDate": "Date Modified: ",
+    "modDateFormat": "date"
+  }
+}
