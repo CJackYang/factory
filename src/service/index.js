@@ -25,6 +25,8 @@ class AppService {
     if (!this._Iot) {
       this._Iot = new AWS.Iot(this.awsConfig)
       this._Iot.createCertificateFromCsrAsync = Promise.promisify(this._Iot.createCertificateFromCsr).bind(this._Iot)
+      this._Iot.attachPolicyAsync = Promise.promisify(this._Iot.attachPolicy).bind(this._Iot)
+      this._Iot.createPolicyAsync = Promise.promisify(this._Iot.createPolicy).bind(this._Iot)
     }
     return this._Iot
   }
