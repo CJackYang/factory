@@ -4,7 +4,6 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 
 const resMiddleware = require('./middleware/res')
-const mysqlMiddleware = require('./middleware/mysql')
 
 const AppService = require('./service')
 const Config = require('../config/config')
@@ -18,9 +17,27 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(resMiddleware)
-app.use(mysqlMiddleware)
 
-app.use('/certificate', require('./router/certificate')(appService.iot))
+app.use('/certificate', require('./router/certificate')(appService))
+
+app.use(function(req, res, next) {
+  var err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
+
+/* eslint-disable */
+app.use(function(err, req, res, next) {
+  if (err) {
+    console.log('::', err)
+  }
+
+  res.status(err.status || 500).json({
+    code: err.code,
+    message: err.message,
+    where: err.where
+  })
+})
 
 app.listen(8888, error => {
   if (error) console.log('server start error. ', error)

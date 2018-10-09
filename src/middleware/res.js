@@ -3,7 +3,7 @@ const path = require('path')
 module.exports =(req, res, next) => {
 
   let clean = () => {
-    if (req.connection) req.connection.release()
+    // if (req.connection) req.connection.release()
   }
 
   res.success = (data) => {

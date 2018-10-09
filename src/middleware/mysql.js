@@ -24,7 +24,7 @@ module.exports = (req, res, next) => {
       callback(null, connection)
     })
   }
-  req.getConnectionAsync = new Promise((resolve, reject) => {
+  req.getConnectionAsync = async () => new Promise((resolve, reject) => {
     req.getConnection((err, conn) => err ? reject(err) : resolve(conn))
   })
   next()
