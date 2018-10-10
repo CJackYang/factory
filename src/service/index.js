@@ -119,8 +119,8 @@ class AppService {
     await connect.beginTransactionAsync()
     try {
       // insert device info into device table
-      await connect.queryAsync('INSERT INTO device (sn, certId, keyId, type) VALUES (?,?,?,?)',
-        [sn, certificateId, keyId, type])
+      await connect.queryAsync('INSERT INTO device (sn, certId, keyId) VALUES (?,?,?)',
+        [sn, certificateId, keyId])
 
       // insert certInfo into deviceCert
       await connect.queryAsync('INSERT INTO deviceCert (keyId, sub_o, sub_cn, iss_o, iss_cn, iss_ou, authkeyId, certSn) VALUES (?,?,?,?,?,?,?,?)',
@@ -131,6 +131,7 @@ class AppService {
       await connect.rollbackAsync()
       throw e
     }
+    connect.release()
 
     return {
       certPem: certificatePem,
