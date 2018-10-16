@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(resMiddleware)
 
 app.use('/certificate', require('./router/certificate')(appService))
+app.use('/token', require('./router/token')())
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found')

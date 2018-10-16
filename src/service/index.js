@@ -97,6 +97,7 @@ class AppService {
     } catch(e) {
       //Ignore if the policy already exists
       if (!e.code || e.code !== 'ResourceAlreadyExistsException') {
+        e.status = 500
         throw e
       }
     }
