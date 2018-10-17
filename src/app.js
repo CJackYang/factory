@@ -18,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(resMiddleware)
 
+app.get('/', (req, res) => res.status(200).send('#hello world'))
+
 app.use('/certificate', require('./router/certificate')(appService))
 app.use('/token', require('./router/token')())
 
