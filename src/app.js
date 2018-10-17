@@ -18,11 +18,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(resMiddleware)
 
-app.get('/provision', (req, res) => res.status(200).send('#hello world'))
+app.get('/provisioning', (req, res) => res.status(200).send('#hello world'))
 app.get('/', (req, res) => res.status(200).send('#hello world'))
 
-app.use('/provision/certificate', require('./router/certificate')(appService))
-app.use('/provision/token', require('./router/token')())
+app.use('/provisioning/certificate', require('./router/certificate')(appService))
+app.use('/provisioning/token', require('./router/token')())
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found')
