@@ -43,7 +43,7 @@ app.use(function(err, req, res, next) {
   })
 })
 
-app.listen(8888, error => {
+app.listen(80, error => {
   if (error) console.log('server start error. ', error)
   console.log('server started on port 8888')
 })
