@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const resMiddleware = require('./middleware/res')
 
 const AppService = require('./service')
-const Config = require('../config/config')
+const Config = require('config')
 
 const appService = new AppService(Config)
 

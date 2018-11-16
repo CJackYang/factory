@@ -50,7 +50,6 @@ class AppService {
     return this._pool
   }
 
-
   destroy () {
     if (this._pool)
       this._pool.end(err => console.log(err))
