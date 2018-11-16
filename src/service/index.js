@@ -31,6 +31,7 @@ class AppService {
       this._Iot.createCertificateFromCsrAsync = Promise.promisify(this._Iot.createCertificateFromCsr).bind(this._Iot)
       this._Iot.attachPrincipalPolicyAsync = Promise.promisify(this._Iot.attachPrincipalPolicy).bind(this._Iot)
       this._Iot.createPolicyAsync = Promise.promisify(this._Iot.createPolicy).bind(this._Iot)
+      this._Iot.attachThingPrincipalAsync = Promise.promisify(this._Iot.attachThingPrincipal).bind(this._Iot)
     }
     return this._Iot
   }
@@ -99,6 +100,20 @@ class AppService {
       if (!e.code || e.code !== 'ResourceAlreadyExistsException') {
         e.status = 500
         throw e
+      }
+    }
+
+    if (type === 'test') {
+      try {
+        await this.iot.attachThingPrincipalAsync({
+          thingName: 'testDev',
+          principal: certificateArn
+        })
+      } catch (e) {
+        if (!e.code || e.code !== 'ResourceAlreadyExistsException') {
+          e.status = 500
+          throw e
+        }
       }
     }
 
