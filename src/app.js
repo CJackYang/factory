@@ -21,8 +21,10 @@ module.exports = (config) => {
   }))
 
   app.use(resMiddleware)
-
+  
   app.get('/provisioning', (req, res) => res.status(200).send('#hello world'))
+  if (process.env.NODE_ENV === 'test') {
+    app.get('/test/provisioning', (req, res) => res.status(200).send('#hello world'))
   app.get('/', (req, res) => res.status(200).send('#hello world'))
 
   if (process.env.NODE_ENV === 'test') {
