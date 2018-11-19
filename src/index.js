@@ -19,8 +19,8 @@ ssm.getParameters({
   if (err) throw err
   let params = data.Parameters.reduce((a, c) => (a[c.Name] = JSON.parse(c.Value), a),  {})
   let app = CreateApp(params)
-  app.listen(80, error => {
+  app.listen(process.env.PORT || 80, error => {
     if (error) console.log('server start error. ', error)
-    console.log('server started on port 8888')
+    console.log('server started on port', process.env.PORT || 80)
   })
 })
