@@ -36,7 +36,7 @@ class AppService {
 
   get pool() {
     if (!this._pool) {
-      let dbConf = process.env.NODE_ENV === 'test' ? this.conf.rds_test : this.conf.rds
+      let dbConf = process.env.NODE_ENV === 'test' ? this.conf['rds-test'] : this.conf.rds
       this._pool = mysql.createPool({
         connectionLimit: 20,
         host: dbConf.host,
