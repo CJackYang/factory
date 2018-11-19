@@ -25,8 +25,13 @@ module.exports = (config) => {
   app.get('/provisioning', (req, res) => res.status(200).send('#hello world'))
   app.get('/', (req, res) => res.status(200).send('#hello world'))
 
-  app.use('/provisioning/certificate', require('./router/certificate')(appService))
-  app.use('/provisioning/token', require('./router/token')())
+  if (process.env.NODE_ENV === 'test') {
+    app.use('/test/provisioning/certificate', require('./router/certificate')(appService))
+    app.use('/test/provisioning/token', require('./router/token')())
+  } else {
+    app.use('/provisioning/certificate', require('./router/certificate')(appService))
+    app.use('/provisioning/token', require('./router/token')())
+  }
 
   app.use(function (req, res, next) {
     var err = new Error('Not Found')

@@ -4,7 +4,9 @@
   "description": "certificate device cert in factory mode",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "PORT=80 NODE_ENV=test node src/index.js",
+    "product": "PORT=80 NODE_ENV=production node src/index.js"
   },
   "repository": {
     "type": "git",
