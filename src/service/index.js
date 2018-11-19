@@ -19,9 +19,7 @@ class AppService {
     this.conf = config
     this.awsConfig = new AWS.Config()
     this.awsConfig.update({
-      region: config.iot.region,
-      accessKeyId: config.user.accessKeyId,
-      secretAccessKey: config.user.secretKey
+      region: config.iot.region
     })
   }
 
@@ -38,12 +36,13 @@ class AppService {
 
   get pool() {
     if (!this._pool) {
+      let dbConf = process.env.NODE_ENV === 'test' ? this.conf.rds_test : this.conf.rds
       this._pool = mysql.createPool({
         connectionLimit: 20,
-        host: this.conf.db.rds.host,
-        user: this.conf.db.rds.user,
-        password: this.conf.db.rds.password,
-        database: this.conf.db.rds.dbname
+        host: dbConf.host,
+        user: dbConf.user,
+        password: dbConf.password,
+        database: dbConf.dbname
       })
       Promise.promisifyAll(this._pool)
     }
