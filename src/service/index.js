@@ -104,7 +104,7 @@ class AppService {
     if (type === 'test') {
       try {
         await this.iot.attachThingPrincipalAsync({
-          thingName: 'testDev',
+          thingName: 'testEnv',
           principal: certificateArn
         })
       } catch (e) {
